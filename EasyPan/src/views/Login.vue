@@ -7,7 +7,7 @@
         :rules="rules"
         ref="formDataRef"
       >
-        <div class="login-title">发发云盘</div>
+        <div class="login-title">云享盘</div>
         <!--input输入-->
         <el-form-item>
           <el-input
@@ -440,8 +440,9 @@ const qqLogin = async () => {
       callbackUrl: route.query.redirectUrl || "",
     },
   });
+  console.log(result);
   if (!result) {
-    return;
+    router.push("/");
   }
   proxy.VueCookies.remove("userInfo");
   document.location.href = result.data;
