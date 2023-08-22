@@ -134,7 +134,7 @@
 <script setup>
 import UpdateAvatar from "./UpdateAvatar.vue";
 import UpdatePassword from "./UpdatePassword.vue";
-// import Uploader from "@/views/main/Uploader.vue";
+import Uploader from "@/views/main/Uploader.vue";
 import {
   ref,
   reactive,

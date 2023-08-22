@@ -5,7 +5,7 @@
       <span class="tips">（仅展示本次上传任务）</span>
     </div>
     <div class="file-list">
-      <div v-for="(item, index) in fileList" :key="item" class="file-item">
+      <div v-for="(item, index) in fileList" class="file-item">
         <div class="upload-panel">
           <div class="file-name">
             {{ item.fileName }}
@@ -164,7 +164,6 @@ const STATUS = {
 const chunkSize = 1024 * 512;
 const fileList = ref([]);
 const delList = ref([]);
-
 
 const addFile = async (file, filePid) => {
   const fileItem = {

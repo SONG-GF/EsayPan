@@ -67,7 +67,7 @@
         :total="dataSource.totalCount"
         :page-sizes="[15, 30, 50, 100]"
         :page-size="dataSource.pageSize"
-        :current-page="dataSource.pageNo"
+        :current-page.sync="dataSource.pageNo"
         :layout="layout"
         @size-change="handlePageSizeChange"
         @current-change="handlePageNoChange"

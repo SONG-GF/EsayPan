@@ -22,7 +22,6 @@
           <el-button link @click="close" v-if="showCancel"> 取消 </el-button>
           <el-button
             v-for="btn in buttons"
-            :key="btn"
             :type="btn.type || 'primary'"
             @click="btn.click"
           >
@@ -35,8 +34,6 @@
 </template>
 
 <script setup>
-import { stringifyQuery } from "vue-router";
-
 const props = defineProps({
   title: {
     type: String,

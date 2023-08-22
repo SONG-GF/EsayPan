@@ -28,10 +28,11 @@ const login = async () => {
     redirectUrl = "/";
   }
   proxy.VueCookies.set("userInfo", result.data.userInfo, 0);
-  console.log("路径", redirectUrl);
+  console.log("路径",redirectUrl);
   router.push(redirectUrl);
 };
 login();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

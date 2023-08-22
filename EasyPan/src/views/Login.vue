@@ -1,5 +1,6 @@
 <template>
   <div class="login-body">
+    <div class="bg"></div>
     <div class="login-panel">
       <el-form
         class="login-register"
@@ -9,7 +10,7 @@
       >
         <div class="login-title">云享盘</div>
         <!--input输入-->
-        <el-form-item>
+        <el-form-item prop="email">
           <el-input
             size="large"
             clearable
@@ -23,7 +24,7 @@
           </el-input>
         </el-form-item>
         <!--登录密码-->
-        <el-form-item v-if="opType == 1">
+        <el-form-item prop="password" v-if="opType == 1">
           <el-input
             type="password"
             size="large"
@@ -38,7 +39,7 @@
         </el-form-item>
         <!--注册-->
         <div v-if="opType == 0 || opType == 2">
-          <el-form-item>
+          <el-form-item prop="emailCode">
             <div class="send-emali-panel">
               <el-input
                 size="large"
@@ -61,7 +62,9 @@
               <div>
                 <p>1、在垃圾箱中查找邮箱验证码</p>
                 <p>2、在邮箱中头像->设置->反垃圾->白名单->设置邮件地址白名单</p>
-                <p>3、将邮箱【sgf1228@163.com】添加到白名单不知道怎么设置？</p>
+                <p>
+                  3、将邮箱【laoluo@wuhancoder.com】添加到白名单不知道怎么设置？
+                </p>
               </div>
               <template #reference>
                 <span class="a-link" :style="{ 'font-size': '14px' }"
@@ -248,7 +251,6 @@ const checkRePassword = (rule, value, callback) => {
 };
 const formData = ref({});
 const formDataRef = ref();
-
 const rules = {
   email: [
     { required: true, message: "请输入邮箱" },
@@ -319,7 +321,6 @@ const getEmailCode = () => {
     });
   });
 };
-
 //发送邮件
 const sendEmailCode = () => {
   formData4SendMailCodeRef.value.validate(async (valid) => {
@@ -429,7 +430,6 @@ const doSubmit = () => {
       showPanel(1);
     }
   });
-  formDataRef.value.validate(async (valid) => {});
 };
 
 //QQ登录
@@ -440,9 +440,8 @@ const qqLogin = async () => {
       callbackUrl: route.query.redirectUrl || "",
     },
   });
-  console.log(result);
   if (!result) {
-    router.push("/");
+    return;
   }
   proxy.VueCookies.remove("userInfo");
   document.location.href = result.data;
@@ -453,11 +452,19 @@ const qqLogin = async () => {
 .login-body {
   height: calc(100vh);
   background-size: cover;
-  background-image: url("../assets/login_bg.jpg");
+  background: url("../assets/login_bg.jpg");
   display: flex;
+  .bg {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-image: url("../assets/login_img.png");
+  }
   .login-panel {
     width: 430px;
-    margin-left: 65%;
+    margin-right: 15%;
     margin-top: calc((100vh - 500px) / 2);
     .login-register {
       padding: 25px;
