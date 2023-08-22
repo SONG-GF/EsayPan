@@ -19,6 +19,8 @@ import Utils from "@/utils/Utils";
 //自定义组件
 import Dialog from "@/components/Dialog.vue";
 import Avatar from "@/components/Avatar.vue";
+import Table from "@/components/Table.vue";
+import Icon from "@/components/Icon.vue";
 
 const app = createApp(App);
 app.use(ElementPlus);
@@ -26,6 +28,8 @@ app.use(router);
 
 app.component("Dialog", Dialog);
 app.component("Avatar", Avatar);
+app.component("Table", Table);
+app.component("Icon", Icon);
 
 //配置全局变量
 app.config.globalProperties.Request = Request;
